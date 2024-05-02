@@ -27,6 +27,7 @@ import com.copasso.cocobill.model.bean.remote.MyUser;
 import com.copasso.cocobill.presenter.UserInfoPresenter;
 import com.copasso.cocobill.presenter.contract.UserInfoContract;
 import com.copasso.cocobill.utils.ImageUtils;
+import com.copasso.cocobill.utils.LocalUserUtils;
 import com.copasso.cocobill.utils.ProgressUtils;
 import com.copasso.cocobill.utils.SnackbarUtils;
 import com.copasso.cocobill.utils.StringUtils;
@@ -79,7 +80,10 @@ public class UserInfoActivity extends BaseMVPActivity<UserInfoContract.Presenter
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        currentUser= BmobUser.getCurrentUser(MyUser.class);
+//        currentUser= BmobUser.getCurrentUser(MyUser.class);
+
+        currentUser = LocalUserUtils.getUser();
+
     }
 
     @Override
@@ -409,7 +413,10 @@ public class UserInfoActivity extends BaseMVPActivity<UserInfoContract.Presenter
     @Override
     public void onSuccess() {
         ProgressUtils.dismiss();
-        currentUser=BmobUser.getCurrentUser(MyUser.class);
+//        currentUser=BmobUser.getCurrentUser(MyUser.class);
+
+        currentUser = LocalUserUtils.getUser();
+
     }
 
     @Override

@@ -15,6 +15,7 @@ import com.copasso.cocobill.presenter.contract.MonthListContract;
 import com.copasso.cocobill.ui.activity.BillAddActivity;
 import com.copasso.cocobill.ui.adapter.MonthListAdapter;
 import com.copasso.cocobill.utils.DateUtils;
+import com.copasso.cocobill.utils.LocalUserUtils;
 import com.copasso.cocobill.utils.ProgressUtils;
 import com.copasso.cocobill.utils.SnackbarUtils;
 import com.copasso.cocobill.widget.stickyheader.StickyHeaderGridLayoutManager;
@@ -107,8 +108,10 @@ public class MonthListFragment extends BaseMVPFragment<MonthListContract.Present
         super.initClick();
         //fab点击事件
         floatBtn.setOnClickListener(v -> {
-            if (BmobUser.getCurrentUser(MyUser.class) == null)
+//            if (BmobUser.getCurrentUser(MyUser.class) == null){
+            if (LocalUserUtils.getUser() == null){
                 SnackbarUtils.show(mContext, "请先登录");
+            }
             else {
                 Intent intent = new Intent(getContext(), BillAddActivity.class);
                 startActivityForResult(intent, 0);

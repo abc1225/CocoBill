@@ -19,6 +19,7 @@ import com.copasso.cocobill.model.bean.remote.MyUser;
 import com.copasso.cocobill.model.repository.LocalRepository;
 import com.copasso.cocobill.utils.GlideCacheUtil;
 import com.copasso.cocobill.utils.ImageUtils;
+import com.copasso.cocobill.utils.LocalUserUtils;
 import com.copasso.cocobill.utils.ProgressUtils;
 import com.copasso.cocobill.utils.SnackbarUtils;
 import com.copasso.cocobill.utils.ToastUtils;
@@ -59,7 +60,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        currentUser = BmobUser.getCurrentUser(MyUser.class);
+//        currentUser = BmobUser.getCurrentUser(MyUser.class);
+        currentUser = LocalUserUtils.getUser();
+
     }
 
     @Override

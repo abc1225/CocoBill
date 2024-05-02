@@ -26,6 +26,7 @@ import com.copasso.cocobill.ui.fragment.MonthChartFragment;
 import com.copasso.cocobill.ui.fragment.MonthListFragment;
 import com.copasso.cocobill.utils.DateUtils;
 import com.copasso.cocobill.utils.GlideCacheUtil;
+import com.copasso.cocobill.utils.LocalUserUtils;
 import com.copasso.cocobill.utils.SharedPUtils;
 import com.copasso.cocobill.utils.SnackbarUtils;
 import com.copasso.cocobill.utils.ThemeManager;
@@ -297,7 +298,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      * 设置DrawerHeader的用户信息
      */
     public void setDrawerHeaderAccount() {
-        currentUser = BmobUser.getCurrentUser(MyUser.class);
+//        currentUser = BmobUser.getCurrentUser(MyUser.class);
+        currentUser = LocalUserUtils.getUser();
         //获取当前用户
         if (currentUser != null) {
             drawerTvAccount.setText(currentUser.getUsername());
